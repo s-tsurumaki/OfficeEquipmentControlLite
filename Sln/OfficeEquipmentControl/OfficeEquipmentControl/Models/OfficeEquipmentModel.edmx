@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OfficeEquipmentControlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_状態">
+          <Key>
+            <PropertyRef Name="状態ID" />
+          </Key>
+          <Property Name="状態ID" Type="int" Nullable="false" />
+          <Property Name="状態" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TS" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="更新日" Type="datetime" Nullable="false" />
+          <Property Name="更新者" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_備品">
+          <Key>
+            <PropertyRef Name="備品ID" />
+          </Key>
+          <Property Name="備品ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="品名" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="型番" Type="nvarchar" MaxLength="200" />
+          <Property Name="備考" Type="nvarchar" MaxLength="200" />
+          <Property Name="TS" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="更新日" Type="datetime" Nullable="false" />
+          <Property Name="更新者" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_備品管理">
+          <Key>
+            <PropertyRef Name="備品管理ID" />
+          </Key>
+          <Property Name="備品管理ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="備品ID" Type="int" Nullable="false" />
+          <Property Name="状態ID" Type="int" Nullable="false" />
+          <Property Name="利用者名" Type="nvarchar" MaxLength="256" />
+          <Property Name="貸出返却日" Type="date" />
+          <Property Name="TS" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="更新日" Type="datetime" Nullable="false" />
+          <Property Name="更新者" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <!--生成中に見つかったエラー:
+警告 6002: テーブル/ビュー 'OfficeEquipmentControl.dbo.V_備品管理_MAX' には主キーが定義されていません。主キーは推論され、定義は読み取り専用のテーブル/ビューとして作成されました。-->
+        <EntityType Name="V_備品管理_MAX">
+          <Key>
+            <PropertyRef Name="備品ID" />
+            <PropertyRef Name="状態ID" />
+            <PropertyRef Name="状態" />
+            <PropertyRef Name="Next状態String" />
+          </Key>
+          <Property Name="備品管理ID" Type="int" />
+          <Property Name="品名" Type="nvarchar" MaxLength="200" />
+          <Property Name="備品ID" Type="int" Nullable="false" />
+          <Property Name="型番" Type="nvarchar" MaxLength="200" />
+          <Property Name="備考" Type="nvarchar" MaxLength="200" />
+          <Property Name="利用者名" Type="nvarchar" MaxLength="256" />
+          <Property Name="貸出返却日" Type="date" />
+          <Property Name="状態ID" Type="int" Nullable="false" />
+          <Property Name="状態" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QRCodeURL" Type="nvarchar" MaxLength="286" />
+          <Property Name="Next状態" Type="int" />
+          <Property Name="Next状態String" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_T_備品管理_T_状態">
+          <End Role="T_状態" Type="Self.T_状態" Multiplicity="1" />
+          <End Role="T_備品管理" Type="Self.T_備品管理" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_状態">
+              <PropertyRef Name="状態ID" />
+            </Principal>
+            <Dependent Role="T_備品管理">
+              <PropertyRef Name="状態ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_備品管理_T_備品">
+          <End Role="T_備品" Type="Self.T_備品" Multiplicity="1" />
+          <End Role="T_備品管理" Type="Self.T_備品管理" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_備品">
+              <PropertyRef Name="備品ID" />
+            </Principal>
+            <Dependent Role="T_備品管理">
+              <PropertyRef Name="備品ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OfficeEquipmentControlModelStoreContainer">
+          <EntitySet Name="T_状態" EntityType="Self.T_状態" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_備品" EntityType="Self.T_備品" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_備品管理" EntityType="Self.T_備品管理" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_備品管理_MAX" EntityType="Self.V_備品管理_MAX" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_備品管理_MAX].[備品管理ID] AS [備品管理ID], 
+    [V_備品管理_MAX].[品名] AS [品名], 
+    [V_備品管理_MAX].[備品ID] AS [備品ID], 
+    [V_備品管理_MAX].[型番] AS [型番], 
+    [V_備品管理_MAX].[備考] AS [備考], 
+    [V_備品管理_MAX].[利用者名] AS [利用者名], 
+    [V_備品管理_MAX].[貸出返却日] AS [貸出返却日], 
+    [V_備品管理_MAX].[状態ID] AS [状態ID], 
+    [V_備品管理_MAX].[状態] AS [状態], 
+    [V_備品管理_MAX].[QRCodeURL] AS [QRCodeURL], 
+    [V_備品管理_MAX].[Next状態] AS [Next状態], 
+    [V_備品管理_MAX].[Next状態String] AS [Next状態String]
+    FROM [dbo].[V_備品管理_MAX] AS [V_備品管理_MAX]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_T_備品管理_T_状態" Association="Self.FK_T_備品管理_T_状態">
+            <End Role="T_状態" EntitySet="T_状態" />
+            <End Role="T_備品管理" EntitySet="T_備品管理" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_備品管理_T_備品" Association="Self.FK_T_備品管理_T_備品">
+            <End Role="T_備品" EntitySet="T_備品" />
+            <End Role="T_備品管理" EntitySet="T_備品管理" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OfficeEquipmentControlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OfficeEquipmentControlEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="T_状態" EntityType="OfficeEquipmentControlModel.T_状態" />
+          <EntitySet Name="T_備品" EntityType="OfficeEquipmentControlModel.T_備品" />
+          <EntitySet Name="T_備品管理" EntityType="OfficeEquipmentControlModel.T_備品管理" />
+          <AssociationSet Name="FK_T_備品管理_T_状態" Association="OfficeEquipmentControlModel.FK_T_備品管理_T_状態">
+            <End Role="T_状態" EntitySet="T_状態" />
+            <End Role="T_備品管理" EntitySet="T_備品管理" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_備品管理_T_備品" Association="OfficeEquipmentControlModel.FK_T_備品管理_T_備品">
+            <End Role="T_備品" EntitySet="T_備品" />
+            <End Role="T_備品管理" EntitySet="T_備品管理" />
+          </AssociationSet>
+          <EntitySet Name="V_備品管理_MAX" EntityType="OfficeEquipmentControlModel.V_備品管理_MAX" />
+        </EntityContainer>
+        <EntityType Name="T_状態">
+          <Key>
+            <PropertyRef Name="状態ID" />
+          </Key>
+          <Property Name="状態ID" Type="Int32" Nullable="false" />
+          <Property Name="状態" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TS" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="更新日" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="更新者" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_備品管理" Relationship="OfficeEquipmentControlModel.FK_T_備品管理_T_状態" FromRole="T_状態" ToRole="T_備品管理" />
+        </EntityType>
+        <EntityType Name="T_備品">
+          <Key>
+            <PropertyRef Name="備品ID" />
+          </Key>
+          <Property Name="備品ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="品名" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="型番" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="備考" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TS" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="更新日" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="更新者" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_備品管理" Relationship="OfficeEquipmentControlModel.FK_T_備品管理_T_備品" FromRole="T_備品" ToRole="T_備品管理" />
+        </EntityType>
+        <EntityType Name="T_備品管理">
+          <Key>
+            <PropertyRef Name="備品管理ID" />
+          </Key>
+          <Property Name="備品管理ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="備品ID" Type="Int32" Nullable="false" />
+          <Property Name="状態ID" Type="Int32" Nullable="false" />
+          <Property Name="利用者名" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="貸出返却日" Type="DateTime" Precision="0" />
+          <Property Name="TS" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="更新日" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="更新者" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_状態" Relationship="OfficeEquipmentControlModel.FK_T_備品管理_T_状態" FromRole="T_備品管理" ToRole="T_状態" />
+          <NavigationProperty Name="T_備品" Relationship="OfficeEquipmentControlModel.FK_T_備品管理_T_備品" FromRole="T_備品管理" ToRole="T_備品" />
+        </EntityType>
+        <Association Name="FK_T_備品管理_T_状態">
+          <End Type="OfficeEquipmentControlModel.T_状態" Role="T_状態" Multiplicity="1" />
+          <End Type="OfficeEquipmentControlModel.T_備品管理" Role="T_備品管理" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_状態">
+              <PropertyRef Name="状態ID" />
+            </Principal>
+            <Dependent Role="T_備品管理">
+              <PropertyRef Name="状態ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_備品管理_T_備品">
+          <End Type="OfficeEquipmentControlModel.T_備品" Role="T_備品" Multiplicity="1" />
+          <End Type="OfficeEquipmentControlModel.T_備品管理" Role="T_備品管理" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_備品">
+              <PropertyRef Name="備品ID" />
+            </Principal>
+            <Dependent Role="T_備品管理">
+              <PropertyRef Name="備品ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="V_備品管理_MAX">
+          <Key>
+            <PropertyRef Name="備品ID" />
+            <PropertyRef Name="状態ID" />
+            <PropertyRef Name="状態" />
+            <PropertyRef Name="Next状態String" />
+          </Key>
+          <Property Name="備品管理ID" Type="Int32" />
+          <Property Name="品名" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="備品ID" Type="Int32" Nullable="false" />
+          <Property Name="型番" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="備考" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="利用者名" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="貸出返却日" Type="DateTime" Precision="0" />
+          <Property Name="状態ID" Type="Int32" Nullable="false" />
+          <Property Name="状態" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QRCodeURL" Type="String" MaxLength="286" FixedLength="false" Unicode="true" />
+          <Property Name="Next状態" Type="Int32" />
+          <Property Name="Next状態String" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OfficeEquipmentControlModelStoreContainer" CdmEntityContainer="OfficeEquipmentControlEntities" >
+          <EntitySetMapping Name="T_状態">
+            <EntityTypeMapping TypeName="OfficeEquipmentControlModel.T_状態">
+              <MappingFragment StoreEntitySet="T_状態">
+                <ScalarProperty Name="更新者" ColumnName="更新者" />
+                <ScalarProperty Name="更新日" ColumnName="更新日" />
+                <ScalarProperty Name="TS" ColumnName="TS" />
+                <ScalarProperty Name="状態" ColumnName="状態" />
+                <ScalarProperty Name="状態ID" ColumnName="状態ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_備品">
+            <EntityTypeMapping TypeName="OfficeEquipmentControlModel.T_備品">
+              <MappingFragment StoreEntitySet="T_備品">
+                <ScalarProperty Name="更新者" ColumnName="更新者" />
+                <ScalarProperty Name="更新日" ColumnName="更新日" />
+                <ScalarProperty Name="TS" ColumnName="TS" />
+                <ScalarProperty Name="備考" ColumnName="備考" />
+                <ScalarProperty Name="型番" ColumnName="型番" />
+                <ScalarProperty Name="品名" ColumnName="品名" />
+                <ScalarProperty Name="備品ID" ColumnName="備品ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_備品管理">
+            <EntityTypeMapping TypeName="OfficeEquipmentControlModel.T_備品管理">
+              <MappingFragment StoreEntitySet="T_備品管理">
+                <ScalarProperty Name="更新者" ColumnName="更新者" />
+                <ScalarProperty Name="更新日" ColumnName="更新日" />
+                <ScalarProperty Name="TS" ColumnName="TS" />
+                <ScalarProperty Name="貸出返却日" ColumnName="貸出返却日" />
+                <ScalarProperty Name="利用者名" ColumnName="利用者名" />
+                <ScalarProperty Name="状態ID" ColumnName="状態ID" />
+                <ScalarProperty Name="備品ID" ColumnName="備品ID" />
+                <ScalarProperty Name="備品管理ID" ColumnName="備品管理ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_備品管理_MAX">
+            <EntityTypeMapping TypeName="OfficeEquipmentControlModel.V_備品管理_MAX">
+              <MappingFragment StoreEntitySet="V_備品管理_MAX">
+                <ScalarProperty Name="Next状態String" ColumnName="Next状態String" />
+                <ScalarProperty Name="Next状態" ColumnName="Next状態" />
+                <ScalarProperty Name="QRCodeURL" ColumnName="QRCodeURL" />
+                <ScalarProperty Name="状態" ColumnName="状態" />
+                <ScalarProperty Name="状態ID" ColumnName="状態ID" />
+                <ScalarProperty Name="貸出返却日" ColumnName="貸出返却日" />
+                <ScalarProperty Name="利用者名" ColumnName="利用者名" />
+                <ScalarProperty Name="備考" ColumnName="備考" />
+                <ScalarProperty Name="型番" ColumnName="型番" />
+                <ScalarProperty Name="備品ID" ColumnName="備品ID" />
+                <ScalarProperty Name="品名" ColumnName="品名" />
+                <ScalarProperty Name="備品管理ID" ColumnName="備品管理ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="なし" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

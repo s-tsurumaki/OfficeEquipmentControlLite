@@ -1,0 +1,49 @@
+﻿@model OfficeEquipmentControl.Models.T_備品
+
+@{
+    ViewBag.Title = "備品の削除";
+}
+
+<h3>備品削除 <small>Item Delete</small></h3>
+
+<div class="panel panel-danger">
+    <div class="panel-heading"><strong>注意</strong></div>
+    <div class="panel-body">備品情報を削除すると、過去の貸出履歴も削除されます。</div>
+</div>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.品名)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.品名)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.型番)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.型番)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.備考)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.備考)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="それでも削除します" class="btn-lg btn-danger" /> 
+        </div>
+    }
+</div>

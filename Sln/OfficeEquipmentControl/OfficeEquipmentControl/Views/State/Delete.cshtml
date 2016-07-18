@@ -1,0 +1,56 @@
+﻿@model OfficeEquipmentControl.Models.T_状態
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>T_状態</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.状態)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.状態)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.更新日)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.更新日)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.更新者)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.更新者)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

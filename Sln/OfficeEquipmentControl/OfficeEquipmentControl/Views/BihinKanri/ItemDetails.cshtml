@@ -1,0 +1,56 @@
+﻿@model OfficeEquipmentControl.Models.T_備品
+
+@{
+    ViewBag.Title = "備品詳細";
+}
+
+<h2>備品詳細 <small>Item Details</small></h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.品名)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.品名)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.型番)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.型番)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.備考)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.備考)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.更新日)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.更新日)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.更新者)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.更新者)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("戻る", "Index",null, new { @class = "btn btn-info" })
+</p>

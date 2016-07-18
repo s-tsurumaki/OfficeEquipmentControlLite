@@ -1,0 +1,46 @@
+﻿@model OfficeEquipmentControl.Models.T_備品管理
+
+@{
+    ViewBag.Title = "備品状態変更";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>備品状態変更 <small>Item Edit</small></h4>
+        <p>@Html.DisplayFor(model => model.T_備品.品名)の状態を変更します。</p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.備品管理ID)
+        @Html.HiddenFor(model => model.備品ID)
+        @Html.HiddenFor(model => model.貸出返却日)
+        @Html.HiddenFor(model => model.TS)
+        @Html.HiddenFor(model => model.更新日)
+        @Html.HiddenFor(model => model.更新者)
+        @Html.HiddenFor(model => model.利用者名)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.状態ID, "状態ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("状態ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.状態ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="変更します" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("戻る", "Index", null, new { @class = "btn btn-info" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

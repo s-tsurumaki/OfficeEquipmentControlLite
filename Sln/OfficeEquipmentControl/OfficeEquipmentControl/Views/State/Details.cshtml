@@ -1,0 +1,50 @@
+﻿@model OfficeEquipmentControl.Models.T_状態
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>T_状態</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.状態)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.状態)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.更新日)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.更新日)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.更新者)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.更新者)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.状態ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
