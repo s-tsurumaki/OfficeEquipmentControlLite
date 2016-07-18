@@ -38,4 +38,4 @@ SQLServerでテーブルに直接値を書いた方が早いと思いますが�
 
 ## Author
 
-[tcnksm](https://github.com/s-tsurumaki)
+[s-tsurumaki](https://github.com/s-tsurumaki)
