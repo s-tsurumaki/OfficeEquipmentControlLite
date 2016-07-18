@@ -6,6 +6,7 @@ QRコードで備品を簡単に貸し借りできる仕組みを作成しまし
 ## Description
 
 ## Demo
+![自分が借りている備品](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/MyItem.png)
 
 
 
