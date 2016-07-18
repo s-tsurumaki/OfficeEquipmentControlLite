@@ -1,9 +1,13 @@
-# OfficeEquipmentControlLite
-備品管理Lite
+# 備品管理をwebで
+QRコードで備品を簡単に貸し借りできる仕組みを作成しました。
+ 
+教材等にお使いください。
 
 ## Description
 
 ## Demo
+
+
 
 ## VS. 
 
