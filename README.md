@@ -14,9 +14,10 @@ QRコードで備品を簡単に貸し借りできる仕組みを作成しまし
 #### 備品の追加について
 SQLServerでテーブルに直接値を書いた方が早いと思いますが、web経由でも登録ができます。
 ![備品登録1](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/additem.png)
+ 
 ![備品登録2](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/AddItemMsg.png)
-
-
+ 
+#### 自分が借りている備品について
 ![自分が借りている備品](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/MyItem.png)
 
 
