@@ -15,6 +15,7 @@
  
 ## システムの持つ状態について
 備品の状態遷移はシンプルな構造です。
+ 
 ![状態遷移](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/State.png)
 
 ## 設定方法について
