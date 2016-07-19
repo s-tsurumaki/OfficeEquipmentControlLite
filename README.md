@@ -41,6 +41,7 @@
 
 #### 備品の追加について
 管理者は備品の登録が行えます。
+ 
 ![備品登録1](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/additem.png)
  
 ![備品登録2](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/AddItemMsg.png)
@@ -49,6 +50,7 @@
 管理者は備品の削除が行えます。
  
 備品を削除すると貸し借りの履歴データも削除されます。
+![備品登録2](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/ItemDelete.png)
 
 #### 備品の状態変更について
 管理者は備品の状態変更が行えます。
