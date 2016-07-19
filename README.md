@@ -34,10 +34,12 @@
 
 #### 自分が借りている備品について
 ユーザーはログインすると自分が借りている備品を確認する事ができます。
+ 
 ![MyItem](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/MyItem.png)
 
 #### 備品検索について
 管理者は登録している全ての備品を検索する事ができます。
+ 
 ![Search](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/ItemSearch.png)
 
 #### 備品の追加について
@@ -49,10 +51,12 @@
 
 #### 備品の状態変更について
 管理者は備品の状態変更が行えます。借りた状態のものを貸出可能にしたり、紛失してしまったものを行方不明にする事ができます。
+ 
 ![ItemDelete](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/ItemEdit.png)
 
 #### 備品の削除について
 管理者は備品の削除が行えます。また、備品を削除すると貸し借りの履歴データも削除されます。
+ 
 ![ItemDelete](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/ItemDelete.png)
 
 ## Licence
