@@ -19,7 +19,10 @@
 ![状態遷移](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/State.png)
 
 ## 設定方法について
-#### アクセス制限について
+### 設定値について
+設定情報はinser文にて用意しています。設定値によって動作が異なるのでデフォルトの設定値を利用して下さい。
+ 
+## アクセス制限について
 制限は[ASP.netのロール権限](https://msdn.microsoft.com/ja-jp/library/5k850zwb(v=vs.100).aspx)で行い、２つのロールで制限しています。
 <table>
     <tr>
@@ -32,34 +35,30 @@
     </tr>
 </table>
 
-#### 設定値について
-設定情報はinser文にて用意しています。設定値によって動作が異なるのでデフォルトの設定値を利用して下さい。
-
-### 機能について
-
-### 自分が借りている備品について
+## 機能について
+## 自分が借りている備品について
 ユーザーはログインすると自分が借りている備品を確認する事ができます。
  
 ![MyItem](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/MyItem.png)
 
-### 備品検索について
+## 備品検索について
 管理者は登録している全ての備品を検索する事ができます。
  
 ![Search](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/ItemSearch.png)
 
-### 備品の追加について
+## 備品の追加について
 管理者は備品の登録が行えます。
  
 ![備品登録1](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/additem.png)
  
 ![備品登録2](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/AddItemMsg.png)
 
-### 備品の状態変更について
+## 備品の状態変更について
 管理者は備品の状態変更が行えます。借りた状態のものを貸出可能にしたり、紛失してしまったものを行方不明にする事ができます。
  
 ![ItemDelete](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/ItemEdit.png)
 
-### 備品の削除について
+## 備品の削除について
 管理者は備品の削除が行えます。また、備品を削除すると貸し借りの履歴データも削除されます。
  
 ![ItemDelete](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/ItemDelete.png)
