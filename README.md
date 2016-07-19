@@ -1,12 +1,21 @@
-# 備品管理をwebで
-QRコードで備品を簡単に貸し借りできる仕組みを作成しました。
+# 備品管理
+備品をQRコードで簡単に貸し借り可能な仕組みを構築しました。
+ 
+備品のQRコードをスマホで読み取り「借りる」ボタンを押すだけで借りる事ができます。
+ 
+※デフォルトでは備品を借りるにはユーザー認証が必要です。
+[備品](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/QRKindle.png)
+
  
 応用すれば様々な場面で活用できるかと思います。
+
+## 利用している技術
+ASP.net MVC5
  
-教材等にお使いください。
-
-## Description
-
+C#
+ 
+PagedList.Mvc
+ 
 ## 設定方法について
 #### 設定値について
 設定情報はinser文にて用意しています。
