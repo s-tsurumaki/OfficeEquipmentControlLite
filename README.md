@@ -1,14 +1,10 @@
 # 備品管理
-備品をQRコードで簡単に貸し借り可能な仕組みを構築しました。
- 
 備品のQRコードをスマホで読み取り「借りる」ボタンを押すだけで借りる事ができます。
+
+返却する場合は再度QRコードを読み取りボタンを押すだけです。
+![サンプル](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/QRScanSample.png)
  
 ※デフォルトでは備品を借りるにはユーザー認証が必要です。
-　
-![備品](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/QRKindle.png)
-　
-![借りるボタン](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/Kariru.jpg)
-
  
 応用すれば様々な場面で活用できるかと思います。
 
