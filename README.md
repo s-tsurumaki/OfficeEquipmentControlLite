@@ -47,10 +47,9 @@
 ![備品登録2](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/AddItemMsg.png)
 
 #### 備品の削除について
-管理者は備品の削除が行えます。
+管理者は備品の削除が行えます。また、備品を削除すると貸し借りの履歴データも削除されます。
  
-備品を削除すると貸し借りの履歴データも削除されます。
-![備品登録2](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/ItemDelete.png)
+![ItemDelete](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/ItemDelete.png)
 
 #### 備品の状態変更について
 管理者は備品の状態変更が行えます。
