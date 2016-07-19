@@ -19,8 +19,8 @@
 ![状態遷移](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/State.png)
 
 ## 設定方法について
-#### ロールについて
-このシステムでは２つのロールを用意しています。
+#### アクセス制限について
+制限は[ASP.netのロール権限](https://msdn.microsoft.com/ja-jp/library/5k850zwb(v=vs.100).aspx)で行い、２つのロールで制限しています。
 <table>
     <tr>
         <td>admin</td>
