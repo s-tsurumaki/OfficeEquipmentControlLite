@@ -4,7 +4,10 @@
 備品のQRコードをスマホで読み取り「借りる」ボタンを押すだけで借りる事ができます。
  
 ※デフォルトでは備品を借りるにはユーザー認証が必要です。
-[備品](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/QRKindle.png)
+　
+![備品](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/QRKindle.png)
+　
+![借りるボタン](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/Kariru.jpg)
 
  
 応用すれば様々な場面で活用できるかと思います。
