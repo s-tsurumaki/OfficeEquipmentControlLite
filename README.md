@@ -13,6 +13,10 @@
 * [PagedList.Mvc](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application)
 * [bootstrap](http://getbootstrap.com/)
  
+## システムの持つ状態について
+備品の状態遷移はシンプルな構造です。
+![状態遷移](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/State.png)
+
 ## 設定方法について
 #### ロールについて
 このシステムでは２つのロールを用意しています。
