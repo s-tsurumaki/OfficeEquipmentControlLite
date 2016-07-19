@@ -1,5 +1,5 @@
 # 備品管理Lite
-備品のQRコードをスマホで読み取り「借りる」ボタンを押すだけで借りる事ができます。
+備品に貼ったQRコードをスマホで読み取り「借りる」ボタンを押すだけで借りる事ができます。
 
 返却する場合は再度QRコードを読み取りボタンを押すだけです。
 ![サンプル](https://github.com/s-tsurumaki/OfficeEquipmentControlLite/blob/master/ReadmeImages/QRScanSample.png)
