@@ -303,8 +303,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -331,7 +329,6 @@
     <Content Include="Views\State\Details.cshtml" />
     <Content Include="Views\State\Edit.cshtml" />
     <Content Include="Views\State\Index.cshtml" />
-    <Content Include="Views\BihinKanri\Details.cshtml" />
     <Content Include="Views\BihinKanri\Edit.cshtml" />
     <Content Include="Views\BihinKanri\Index.cshtml" />
     <Content Include="Views\BihinKanri\OneEdit.cshtml" />

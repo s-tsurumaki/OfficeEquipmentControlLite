@@ -10,7 +10,7 @@ using OfficeEquipmentControl.Models;
 using PagedList; // ページリスト
 
 /// <summary>
-/// OfficeEquipmentControl.Controllers
+/// 備品管理
 /// </summary>
 namespace OfficeEquipmentControl.Controllers
 {
@@ -20,16 +20,15 @@ namespace OfficeEquipmentControl.Controllers
     [Authorize]
     public class BihinKanriController : Controller
     {
-        #region エンティティ
+        #region Entities
         /// <summary>
         /// OfficeEquipmentControlEntities
         /// </summary>
         private OfficeEquipmentControlEntities db = new OfficeEquipmentControlEntities();
         #endregion
-
-        #region Index
+        #region  GET :BihinKanri/Index (自分が借りている備品一覧を表示します)
         /// <summary>
-        /// Index
+        /// 自分が借りている備品一覧を表示します
         /// </summary>
         /// <returns>ActionResult</returns>
         [Authorize(Roles = "admin,user")]
@@ -39,8 +38,15 @@ namespace OfficeEquipmentControl.Controllers
             return View(v_備品管理_MAX.ToList());
         }
         #endregion
-
-        #region Search
+        #region GET :BihinKanri/Search (備品の検索)
+        /// <summary>
+        /// 備品の検索
+        /// </summary>
+        /// <param name="sortOrder"></param>
+        /// <param name="currentFilter"></param>
+        /// <param name="searchString"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
         [Authorize(Roles = "admin")]
         public ActionResult Search(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -89,22 +95,12 @@ namespace OfficeEquipmentControl.Controllers
             return View(students.ToPagedList(pageNumber, pageSize));
         }
         #endregion
-
-        // GET: BihinKanri/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            T_備品管理 t_備品管理 = db.T_備品管理.Find(id);
-            if (t_備品管理 == null)
-            {
-                return HttpNotFound();
-            }
-            return View(t_備品管理);
-        }
-
+        #region GET :BihinKanri/ItemDetails (備品の詳細を表示します)
+        /// <summary>
+        /// 備品の詳細を表示します
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult ItemDetails(int? id)
         {
             if (id == null)
@@ -118,8 +114,12 @@ namespace OfficeEquipmentControl.Controllers
             }
             return View(t_備品);
         }
-
-        
+        #endregion
+        #region GET :BihinKanri/Create (備品を追加します)
+        /// <summary>
+        /// 備品を追加します。
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
@@ -128,7 +128,8 @@ namespace OfficeEquipmentControl.Controllers
             t_備品.更新者 = User.Identity.Name;
             return View(t_備品);
         }
-
+        #endregion
+        #region POST:BihinKanri/Create (備品を追加します)
         // POST: Bihin/Create
         // 過多ポスティング攻撃を防止するには、バインド先とする特定のプロパティを有効にしてください。
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
@@ -146,9 +147,13 @@ namespace OfficeEquipmentControl.Controllers
 
             return View(t_備品);
         }
-
-
-        // GET: BihinKanri/Edit/5
+        #endregion
+        #region GET :BihinKanri/Edit (備品管理状態を変更します)
+        /// <summary>
+        /// 備品管理状態を変更します。
+        /// </summary>
+        /// <param name="id">備品管理ID</param>
+        /// <returns></returns>
         [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
@@ -165,10 +170,13 @@ namespace OfficeEquipmentControl.Controllers
             ViewBag.備品ID = new SelectList(db.T_備品, "備品ID", "品名", t_備品管理.備品ID);
             return View(t_備品管理);
         }
-
-        // POST: BihinKanri/Edit/5
-        // 過多ポスティング攻撃を防止するには、バインド先とする特定のプロパティを有効にしてください。
-        // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
+        #endregion
+        #region POST:BihinKanri/Edit (備品管理状態を変更します)
+        /// <summary>
+        /// 備品管理状態を変更します。
+        /// </summary>
+        /// <param name="t_備品管理">t_備品管理</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "admin")]
@@ -184,10 +192,10 @@ namespace OfficeEquipmentControl.Controllers
             ViewBag.備品ID = new SelectList(db.T_備品, "備品ID", "品名", t_備品管理.備品ID);
             return View(t_備品管理);
         }
-
-        // GET: BihinKanri/OneEdit/5
+        #endregion
+        #region GET :BihinKanri/OneEdit (QRコードで備品管理を行います)
         /// <summary>
-        /// 
+        /// QRコードで備品管理を行います。
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -232,8 +240,8 @@ namespace OfficeEquipmentControl.Controllers
 
             return View(t_備品管理);
         }
-
-        // POST: BihinKanri/Edit/5
+        #endregion
+        #region POST:BihinKanri/OneEdit (QRコードで備品管理を行います)
         // 過多ポスティング攻撃を防止するには、バインド先とする特定のプロパティを有効にしてください。
         // 詳細については、http://go.microsoft.com/fwlink/?LinkId=317598 を参照してください。
         /// <summary>
@@ -295,9 +303,13 @@ namespace OfficeEquipmentControl.Controllers
             ViewBag.備品ID = new SelectList(db.T_備品, "備品ID", "品名", t_備品管理.備品ID);
             return View(t_備品管理);
         }
-
-
-        // GET: BihinKanri/Delete/5
+        #endregion
+        #region GET: BihinKanri/Delete (備品を削除します)
+        /// <summary>
+        /// 備品を削除します
+        /// </summary>
+        /// <param name="id">備品id</param>
+        /// <returns></returns>
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -313,20 +325,10 @@ namespace OfficeEquipmentControl.Controllers
 
             return View(t_備品);
         }
-
-        // POST: BihinKanri/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            T_備品管理 t_備品管理 = db.T_備品管理.Find(id);
-            db.T_備品管理.Remove(t_備品管理);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
+        #endregion
+        #region Dispose (アンマネージ リソースを解放します)
         /// <summary>
-        /// 
+        /// アンマネージ リソースを解放します。
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -337,5 +339,6 @@ namespace OfficeEquipmentControl.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion
     }
 }
