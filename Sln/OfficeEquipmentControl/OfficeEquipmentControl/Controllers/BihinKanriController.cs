@@ -44,55 +44,56 @@ namespace OfficeEquipmentControl.Controllers
         /// </summary>
         /// <param name="sortOrder"></param>
         /// <param name="currentFilter"></param>
-        /// <param name="searchString"></param>
+        /// <param name="状態ID"></param>
         /// <param name="page"></param>
         /// <returns></returns>
         [Authorize(Roles = "admin")]
-        public ActionResult Search(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Search(string sortOrder, int? currentFilter, int? 状態ID, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-            if (searchString != null)
+            if (状態ID != null)
             {
                 page = 1;
             }
             else
             {
-                searchString = currentFilter;
+                状態ID = currentFilter;
             }
 
-            ViewBag.CurrentFilter = searchString;
+            ViewBag.CurrentFilter = 状態ID;
 
-            var students = from s in db.V_備品管理_MAX
+            var bihin = from s in db.V_備品管理_MAX
                            select s;
-            if (!String.IsNullOrEmpty(searchString))
+            if (!(状態ID == null))
             {
-                students = students.Where(s => s.品名.Contains(searchString));
+                bihin = bihin.Where(s => s.状態ID == 状態ID);
             }
             switch (sortOrder)
             {
                 case "備品ID":
-                    students = students.OrderByDescending(s => s.備品ID);
+                    bihin = bihin.OrderByDescending(s => s.備品ID);
                     break;
                 case "品名":
-                    students = students.OrderByDescending(s => s.品名);
+                    bihin = bihin.OrderByDescending(s => s.品名);
                     break;
                 case "型番":
-                    students = students.OrderBy(s => s.型番);
+                    bihin = bihin.OrderBy(s => s.型番);
                     break;
                 case "備考":
-                    students = students.OrderByDescending(s => s.備考);
+                    bihin = bihin.OrderByDescending(s => s.備考);
                     break;
                 default:  // Name ascending 
-                    students = students.OrderBy(s => s.備品ID);
+                    bihin = bihin.OrderBy(s => s.備品ID);
                     break;
             }
 
-            int pageSize = 2;
+            ViewBag.状態ID = new SelectList(db.T_状態, "状態ID", "状態");
+
+            int pageSize = 50;
             int pageNumber = (page ?? 1);
-            return View(students.ToPagedList(pageNumber, pageSize));
+            return View(bihin.ToPagedList(pageNumber, pageSize));
         }
         #endregion
         #region GET :BihinKanri/ItemDetails (備品の詳細を表示します)

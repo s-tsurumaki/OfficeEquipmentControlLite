@@ -9,29 +9,46 @@
 
 <h2>備品検索 <small>Itam Search</small></h2>
 
-@using (Html.BeginForm("Index", "Student", FormMethod.Get))
-{
-    <p>
-        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
-    </p>
+@{
+    // 備品名を作成
+    string bihinID = @Html.DisplayNameFor(model => model.First().備品ID).ToString();
 }
+
+@using (Html.BeginForm("Search", "bihinKanri", FormMethod.Get))
+{
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><strong>検索条件</strong></div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.First().状態ID, "状態ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.DropDownList("状態ID", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" value="検索" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("備品ID", "Search", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink(bihinID, "Search", new { sortOrder = bihinID, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("状態", "Search", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.LabelFor(model => model.First().状態)
         </th>
         <th>
-            @Html.ActionLink("品名", "Search", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.LabelFor(model => model.First().品名)
         </th>
         <th>
-            @Html.ActionLink("利用者名", "Search", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.LabelFor(model => model.First().利用者名)
         </th>
         <th>
-            @Html.ActionLink("貸出返却日", "Search", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.LabelFor(model => model.First().貸出返却日)
         </th>
         <th></th>
         <th></th>
