@@ -291,7 +291,6 @@ namespace OfficeEquipmentControl.Controllers
                     else
                     {
                         // 既に更新されている場合。
-
                         tx.Rollback(); // ロールバック
                     }
 
@@ -305,7 +304,7 @@ namespace OfficeEquipmentControl.Controllers
             return View(t_備品管理);
         }
         #endregion
-        #region GET: BihinKanri/Delete (備品を削除します)
+        #region GET : BihinKanri/Delete (備品を削除します)
         /// <summary>
         /// 備品を削除します
         /// </summary>
@@ -325,6 +324,22 @@ namespace OfficeEquipmentControl.Controllers
             }
 
             return View(t_備品);
+        }
+        #endregion
+        #region POST: BihinKanri/Delete (備品を削除します)
+        /// <summary>
+        /// 備品を削除します
+        /// </summary>
+        /// <param name="id">備品id</param>
+        /// <returns></returns>
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            T_備品 t_備品 = db.T_備品.Find(id);
+            db.T_備品.Remove(t_備品);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         #endregion
         #region Dispose (アンマネージ リソースを解放します)

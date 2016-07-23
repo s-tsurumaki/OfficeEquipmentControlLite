@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="OfficeEquipmentControlModel.T_備品管理" Width="1.5" PointX="3.125" PointY="0.875" />
         <AssociationConnector Association="OfficeEquipmentControlModel.FK_T_備品管理_T_状態" />
         <AssociationConnector Association="OfficeEquipmentControlModel.FK_T_備品管理_T_備品" />
-        <EntityTypeShape EntityType="OfficeEquipmentControlModel.V_備品管理_MAX" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="OfficeEquipmentControlModel.V_備品管理_MAX" Width="1.5" PointX="7.25" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
